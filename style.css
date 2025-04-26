@@ -10,7 +10,7 @@ body {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(230, 230, 230);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -26,9 +26,52 @@ body {
     font-size: 15px;
     font-weight: 400;
 }
-.nav-item .nav-link.active {
-    color: #2c2c2c;
+.nav-item .nav-link.active, .nav-item .nav-link:hover{
+    color: #ffbb98;
 }
+
+/* 我要領養 */
+.card {
+    margin-top: 3px;
+}
+.card-body {
+    text-align: center;
+}
+.card-body .btn {
+    display: block;   
+    margin: 0 auto;
+    width: 120px;
+    border: none;
+    background-color: #7D8E95;
+    font-weight: 700;
+}
+.card-body .btn:hover, .card-body .btn:active{
+    background-color: #5d696e;
+}
+.card-img-top {
+    width: 100%;
+    height: 18rem; /* 和bootstrap card同寬度 */
+    object-fit: cover;
+    object-position: center center;
+}
+#addAnimalBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050; /* 確保在其他元素上方 */
+}
+#addAnimalForm {
+    position: fixed;
+    bottom: 70px; /* 按鈕上方 */
+    right: 20px;
+    max-width: 600px;
+    background: white;
+    padding: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    display: none; /* 初始隱藏，按鈕點擊顯示 */
+    z-index: 1051;
+    border-radius: 8px;
+  }
 
 /* 登入註冊表單 */
 .input-boxes {
@@ -40,14 +83,14 @@ body {
     margin-top: 70px;
 }
 .input-boxes button {
-    background-color: #878787;
+    background-color: #7D8E95;
     border: none;
     color: rgb(255, 255, 255);
     font-weight: 700;
     margin-top: 20px;
 }
 .input-boxes button:hover {
-    background-color: #535353;
+    background-color: #586469;
 }
 .input-boxes label {
     color: #acacac;
@@ -59,10 +102,10 @@ body {
     margin-bottom: 40px;
 }
 .signup-link {
-    color: #2c2c2c;
+    color: #7D8E95;
 }
 .signup-link:hover {
-    color: #878787;
+    color: #4b565a;
 }
 .form-control:focus {
     border-color: #484848;
@@ -77,16 +120,17 @@ footer {
     justify-content: center;
     text-align: center;
     line-height: 30px;
-    background-color: #aeaeae;
+    background-color: #ffffff;
     padding: 20px 0;
     margin: 0;
+    margin-top: 50px;
 }
 footer a {
     text-decoration: none;
-    color: #333333;
+    color: #586469;
 }
 footer a:hover {
-    color: #878787;
+    color: #93a6ae;
 }
 footer p {
     margin-bottom: 0;
