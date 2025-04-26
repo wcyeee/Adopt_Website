@@ -33,14 +33,18 @@ body {
 /* 登入註冊表單 */
 .input-boxes {
     border: 1px solid #2c2c2c;
+    border-radius: 10px;
     padding: 80px 100px;
     width: 600px;
+    margin: auto;
+    margin-top: 70px;
 }
 .input-boxes button {
     background-color: #878787;
     border: none;
     color: rgb(255, 255, 255);
     font-weight: 700;
+    margin-top: 20px;
 }
 .input-boxes button:hover {
     background-color: #535353;
@@ -52,30 +56,38 @@ body {
     text-align: center;
     font-size: 40px;
     font-weight: 700;
-
     margin-bottom: 40px;
 }
+.signup-link {
+    color: #2c2c2c;
+}
+.signup-link:hover {
+    color: #878787;
+}
 .form-control:focus {
-    border-color: #484848; /* 你想要的顏色 */
+    border-color: #484848;
     box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0);
 }
 
 /* 頁尾 */
 footer {
-    font-size: 15px;
+    font-size: 13px;
+    font-weight: 300;
     display: flex;
     justify-content: center;
     text-align: center;
-    line-height: 20px;
+    line-height: 30px;
     background-color: #aeaeae;
     padding: 20px 0;
     margin: 0;
 }
 footer a {
-    margin: 0 15px;
     text-decoration: none;
     color: #333333;
 }
 footer a:hover {
     color: #878787;
+}
+footer p {
+    margin-bottom: 0;
 }

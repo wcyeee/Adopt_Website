@@ -20,6 +20,20 @@
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Bootstrap" width="30" height="24" />
+      
+      <!-- 網頁變窄的時候會出現的toggle按鈕-->
+      <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+    <span class="navbar-toggler-icon"></span>
+    </button>
+      
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav nav-underline me-auto mb-2 mb-lg-0">
           <li class="nav-item">
@@ -37,73 +51,82 @@
   </nav>
 
   <!-- 主要內容區 -->
-  <main class="flex-grow-1 container mt-5" style="max-width: 450px;">
+  <main class="flex-grow-1 container mt-5">
 
     <!-- 註冊表單 -->
-    <div class="input-boxes">
-      <form>
-        <div class="form-floating mb-3">
-          <input
-            type="text"
-            class="form-control"
-            id="registerUsername"
-            placeholder="請輸入使用者名稱"
-            pattern="^[A-Za-z0-9]+$"
-            title="使用者名稱只能包含英文字母和數字"
-            required
-          />
-          <label for="registerUsername">使用者名稱</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input
-            type="email"
-            class="form-control"
-            id="registerEmail"
-            placeholder="name@example.com"
-            required
-          />
-          <label for="registerEmail">電子郵件</label>
-        </div>
-        <div class="form-floating mb-5">
-          <input
-            type="tel"
-            class="form-control"
-            id="registerPhone"
-            placeholder="0912345678"
-            pattern="09\d{8}"
-            title="請輸入有效的台灣行動電話 (09開頭共10碼數字)"
-            required
-          />
-          <label for="registerPhone">行動電話</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input
-            type="password"
-            class="form-control"
-            id="registerPassword"
-            placeholder="密碼"
-            required
-          />
-          <label for="registerPassword">密碼</label>
-        </div>
-        <div class="form-floating mb-5">
-          <input
-            type="password"
-            class="form-control"
-            id="registerConfirmPassword"
-            placeholder="確認密碼"
-            required
-          />
-          <label for="registerConfirmPassword">確認密碼</label>
-        </div>
-        <button type="submit" class="btn btn-success w-100">註冊</button>
-      </form>
+    <div class="input-boxes" style="margin-top: -10px; margin-bottom: 35px;">
+        <h1>會員註冊</h1>
+        <form>
+            <div class="form-floating mb-3">
+                <input
+                    type="text"
+                    class="form-control"
+                    id="registerUsername"
+                    placeholder="請輸入使用者名稱"
+                    pattern="^[A-Za-z0-9]+$"
+                    title="使用者名稱只能包含英文字母和數字"
+                    required
+                />
+                <label for="registerUsername">使用者名稱</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input
+                    type="password"
+                    class="form-control"
+                    id="registerPassword"
+                    placeholder="密碼"
+                    required
+                />
+                <label for="registerPassword">密碼</label>
+            </div>
+            <div class="form-floating mb-5">
+                <input
+                    type="password"
+                    class="form-control"
+                    id="registerConfirmPassword"
+                    placeholder="確認密碼"
+                    required
+                />
+                <label for="registerConfirmPassword">確認密碼</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input
+                    type="email"
+                    class="form-control"
+                    id="registerEmail"
+                    placeholder="name@example.com"
+                    required
+                />
+                <label for="registerEmail">電子郵件</label>
+            </div>
+            <div class="form-floating mb-5">
+                <input
+                    type="tel"
+                    class="form-control"
+                    id="registerPhone"
+                    placeholder="0912345678"
+                    pattern="09\d{8}"
+                    title="請輸入有效的台灣行動電話 (09開頭共10碼數字)"
+                    required
+                />
+                <label for="registerPhone">行動電話</label>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">註冊</button>
+        </form>
     </div>
   </main>
 
   <!-- 頁尾 -->
   <footer>
-    21232
+    <p>
+      <a href="index.html">網站介紹</a>
+      <span class="divider"> · </span>
+      <a href="adopt.html">我要領養</a>
+      <span class="divider"> · </span>
+      <a href="login.html">登入/註冊</a>
+      <br>
+      Copyright &#169; 2025 領養動物網站 All rights reserved</p>
   </footer>
 </body>
 </html>
