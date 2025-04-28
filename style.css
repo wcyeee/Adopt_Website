@@ -76,8 +76,14 @@ body {
 .card-body {
     text-align: center;
 }
+.card-title {
+    font-weight: 700;
+}
+.card-text {
+    padding-bottom: 10px;
+}
 .card-body .btn {
-    display: block;   
+    display: block; 
     margin: 0 auto;
     width: 120px;
     border: none;
@@ -94,23 +100,79 @@ body {
     object-position: center center;
 }
 #addAnimalBtn {
+    background-color: #ef966a;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 20px;
+    font-weight: 700;
     position: fixed;
     bottom: 20px;
     right: 20px;
     z-index: 1050; /* 確保在其他元素上方 */
 }
+.plus-btn{
+    font-weight: 700;
+    font-size: 50px;
+}
 #addAnimalForm {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+    transition: opacity 0.3s ease, transform 0.3s ease;
     position: fixed;
-    bottom: 70px; /* 按鈕上方 */
-    right: 20px;
-    max-width: 600px;
-    background: white;
-    padding: 15px;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    max-width: 500px; /* 可以加這行避免表單太寬 */
+    overflow-y: auto;
+    background-color: white;
+    z-index: 1050;
+    max-height: 90vh;
+    padding: 20px;
+    border-radius: 10px;
     box-shadow: 0 0 15px rgba(0,0,0,0.3);
-    display: none; /* 初始隱藏，按鈕點擊顯示 */
-    z-index: 1051;
+    pointer-events: none;
+}
+#addAnimalForm.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+#overlay {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    pointer-events: none; /* 預設不可點擊 */
+}
+#overlay.show {
+    opacity: 1;
+    pointer-events: auto; /* 顯示時才可點擊 */
+}
+#toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #4CAF50;
+    color: white;
+    padding: 12px 20px;
     border-radius: 8px;
-  }
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 2000;
+    pointer-events: none;
+}
+#toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+#addAnimalForm label {
+    color: #6b6b6b;
+}
+
 
 /* 登入註冊表單 */
 .input-boxes {
@@ -159,7 +221,7 @@ footer {
     justify-content: center;
     text-align: center;
     line-height: 30px;
-    background-color: #ffffff;
+    background-color: #f8f9fa;
     padding: 20px 0;
     margin: 0;
     margin-top: 50px;
