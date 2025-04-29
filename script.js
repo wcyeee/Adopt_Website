@@ -6,17 +6,18 @@ const cancelBtn = document.getElementById("cancelBtn");
 const formDiv = document.getElementById("addAnimalForm");
 const animalForm = document.getElementById("animalForm");
 const overlay = document.getElementById("overlay");
+const statuses = ["尚未領養", "預約領養"];
 
 let animals = [
-  { id: 1, name: "小花", species: "狗", age: 2, range: "北部", desc: "活潑可愛，喜歡玩球", img: "image/pig.jpg" },
-  { id: 2, name: "小白", species: "貓", age: 3, range: "中部", desc: "溫馴親人，適合家庭飼養", img: "image/pig.jpg" },
-  { id: 3, name: "小黑", species: "貓", age: 1, range: "南部", desc: "活潑好動", img: "image/pig.jpg" },
-  { id: 4, name: "小黃", species: "豬", age: 4, range: "中部", desc: "溫馴親人", img: "image/pig.jpg" },
-  { id: 4, name: "小黃", species: "豬", age: 4, range: "中部", desc: "溫馴親人", img: "image/pig.jpg" },
-  { id: 4, name: "小黃", species: "豬", age: 4, range: "中部", desc: "溫馴親人", img: "image/pig.jpg" },
-  { id: 4, name: "小黃", species: "豬", age: 4, range: "中部", desc: "溫馴親人", img: "image/pig.jpg" },
-  { id: 4, name: "小黃", species: "豬", age: 4, range: "中部", desc: "溫馴親人", img: "image/pig.jpg" },
-  { id: 4, name: "小黃", species: "豬", age: 4, range: "中部", desc: "溫馴親人", img: "image/pig.jpg" },
+  { id: 1, name: "小花", species: "狗", age: 2, range: "北部", desc: "3個月／母", status: "尚未領養", img: "image/pig.jpg" },
+  { id: 2, name: "小白", species: "貓", age: 3, range: "中部", desc: "1歲5個月／公", status: "預約領養", img: "image/pig.jpg" },
+  { id: 3, name: "小黑", species: "貓", age: 1, range: "南部", desc: "3個月／母", status: "預約領養", img: "image/pig.jpg" },
+  { id: 4, name: "小黃", species: "豬", age: 4, range: "中部", desc: "1歲5個月／公", status: "尚未領養", img: "image/pig.jpg" },
+  { id: 5, name: "小白", species: "豬", age: 4, range: "中部", desc: "1歲5個月／公", status: "預約領養", img: "image/pig.jpg" },
+  { id: 6, name: "小黑", species: "豬", age: 4, range: "中部", desc: "1歲5個月／公", status: "預約領養", img: "image/pig.jpg" },
+  { id: 7, name: "小黃", species: "豬", age: 4, range: "中部", desc: "1歲5個月／公", status: "尚未領養", img: "image/pig.jpg" },
+  { id: 8, name: "小白", species: "豬", age: 4, range: "中部", desc: "1歲5個月／公", status: "預約領養", img: "image/pig.jpg" },
+  { id: 9, name: "小黑", species: "豬", age: 4, range: "中部", desc: "1歲5個月／公", status: "預約領養", img: "image/pig.jpg" },
 ];
 
 function generateId() {
@@ -26,24 +27,30 @@ function generateId() {
 function renderCards(data) {
   animalContainer.innerHTML = "";
   data.forEach(animal => {
+    const statuses = ["尚未領養", "預約領養"];
+    const statusHtml = statuses.map(status => {
+      const activeClass = (status === animal.status) ? "active" : "";
+      return `<span class="status-${status} ${activeClass}">${status}</span>`;
+    }).join("／");
+
     const col = document.createElement("div");
     col.className = "col-md-3 animal-card";
     col.dataset.id = animal.id;
 
     col.innerHTML = `
-    <div class="card h-100 d-flex flex-column">
-      <img src="${animal.img}" class="card-img-top" alt="${animal.name}">
-      <div class="card-body d-flex flex-column justify-content-between">
-        <div>
-          <h2 class="card-title">${animal.name}</h2>
-          <p class="card-text">${animal.desc}</p>
-        </div>
-        <div>
-          <a href="animal_detail.html?id=${animal.id}" class="btn btn-primary w-100 mb-2">詳細資訊</a>
-          <button class="btn btn-danger btn-sm w-100 delete-btn">刪除</button>
+      <div class="card h-100 d-flex flex-column">
+        <img src="${animal.img}" class="card-img-top" alt="${animal.name}">
+        <div class="card-body d-flex flex-column justify-content-between">
+          <div>
+            <h2 class="card-title">${animal.name}</h2>
+            <p class="card-text">${animal.desc}</p>
+            <p class="status-container">${statusHtml}</p>
+          </div>
+          <div>
+            <a href="animal_detail.html?id=${animal.id}" class="btn btn-primary w-100 mb-2">詳細資訊</a>
+          </div>
         </div>
       </div>
-    </div>
     `;
     animalContainer.appendChild(col);
   });
@@ -157,16 +164,6 @@ function showToast(message) {
     toast.classList.remove("show");
   }, 2000); // 2秒後自動消失
 }
-
-
-animalContainer.addEventListener("click", e => {
-  if (e.target.classList.contains("delete-btn")) {
-    const cardDiv = e.target.closest(".animal-card");
-    const id = Number(cardDiv.dataset.id);
-    animals = animals.filter(a => a.id !== id);
-    filterAndSort();
-  }
-});
 
 filterType.addEventListener("change", filterAndSort);
 sortOption.addEventListener("change", filterAndSort);

@@ -30,6 +30,7 @@ body {
     color: #ef966a;
 }
 
+
 /* 網站介紹 */
 .introduction-banner {
     display: flex;
@@ -69,12 +70,14 @@ body {
     border-radius: 125px;
 }
 
+
 /* 我要領養首頁 */
 .card {
     margin-top: 3px;
 }
 .card-body {
     text-align: center;
+    padding-bottom: 10px;
 }
 .card-title {
     font-weight: 700;
@@ -172,7 +175,80 @@ body {
 #addAnimalForm label {
     color: #6b6b6b;
 }
+.status-container {
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+    user-select: none;
+}  
+.status-container span {
+    cursor: default;
+    padding: 0 6px;
+}  
+/* 預設文字顏色 */
+.status-尚未領養, .status-預約領養 {
+    color: #888;
+}
+/* 當前狀態粗體和顏色 */
+.status-尚未領養.active, .status-預約領養.active {
+    color: #ef966a;
+    font-weight: 700;
+}
 
+
+/* 我要領養動物詳細頁面 */
+.detail-container {
+    max-width: 900px; /* 控制最大寬度 */
+    margin: 100px 10%; /* 上下間距40px，置中 */
+    padding: 0 15px; /* 左右內距15px */
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+.detail-img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    flex-shrink: 0;
+    margin-right: 50px;
+}
+.detail-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.detail-info h1 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-weight: 700;
+    font-size: 80px;
+    color: #31383b;
+}
+.detail-info p {
+    font-size: 20px;
+    line-height: 2.8;
+    color: #4b4b4b;
+    margin-bottom: 0;
+    margin-left: 20px;
+}
+.adopt-btn {
+    align-self: start;
+    background-color: #ef966a;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 25px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.adopt-btn:hover {
+    background-color: #d57d50;
+}
 
 /* 登入註冊表單 */
 .input-boxes {
@@ -212,6 +288,7 @@ body {
     border-color: #484848;
     box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0);
 }
+
 
 /* 頁尾 */
 footer {
