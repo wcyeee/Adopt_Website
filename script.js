@@ -7,6 +7,15 @@ const formDiv = document.getElementById("addAnimalForm");
 const animalForm = document.getElementById("animalForm");
 const overlay = document.getElementById("overlay");
 const statuses = ["尚未領養", "預約領養"];
+const navbar = document.querySelector('.navbar');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) { // 捲動超過50px就加透明class
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
 
 let animals = [
   { id: 1, name: "小花", species: "狗", age: 2, range: "北部", desc: "3個月／母", status: "尚未領養", img: "image/pig.jpg" },

@@ -3,6 +3,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    padding-top: 40px;
 }
 body {
     font-family: "Noto Sans TC", sans-serif;
@@ -28,6 +29,12 @@ body {
 }
 .nav-item .nav-link.active, .nav-item .nav-link:hover{
     color: #ef966a;
+}
+.navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.8) !important; /* 半透明白底 */
+    transition: background-color 0.3s ease;
+    backdrop-filter: saturate(180%) blur(10px); /* 毛玻璃效果 */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 
@@ -104,19 +111,71 @@ body {
 }
 #addAnimalBtn {
     background-color: #ef966a;
-    padding: 10px 10px;
     border: none;
-    border-radius: 20px;
-    font-weight: 700;
+    border-radius: 50%; /* 圓形 */
+    width: 90px;      /* 加大寬度 */
+    height: 90px;     /* 加大高度 */
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1050; /* 確保在其他元素上方 */
-}
-.plus-btn{
+    bottom: 30px;     /* 底部距離稍微調整 */
+    right: 30px;      /* 右側距離稍微調整 */
+    z-index: 1050;
+    cursor: pointer;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    /* 平滑過渡 */
+    transition: background-color 0.3s ease, width 0.3s ease, height 0.3s ease;
+    overflow: hidden;
+    padding: 0;
+  }
+  
+  #addAnimalBtn:hover {
+    background-color: #dc865c;
+    width: 180px;    /* 擴大寬度以容納文字 */
+    height: 110px;   /* 擴大高度 */
+    border-radius: 35px; /* 橢圓形 */
+  }
+  
+  /* 加號文字 */
+  .plus-btn {
     font-weight: 700;
-    font-size: 50px;
-}
+    font-size: 70px;  /* 放大加號字體 */
+    line-height: 1;
+    transition: transform 0.3s ease;
+  }
+  
+  /* 滑鼠懸停加號放大 */
+  #addAnimalBtn:hover .plus-btn {
+    transform: scale(1.1);
+  }
+  
+  /* 新增領養動物文字 */
+  #addAnimalBtn span.text {
+    font-weight: 700;
+    font-size: 20px;  /* 放大文字 */
+    color: white;
+    margin-top: 10px;
+  
+    /* 初始隱藏 */
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+  
+    /* 動畫過渡 */
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+    display: block;
+    margin-bottom: 6px;
+  }
+  
+  /* hover 顯示文字 */
+  #addAnimalBtn:hover span.text {
+    opacity: 1;
+    max-height: 30px;  /* 提高 max-height 以完整顯示 */
+  }
+    
 #addAnimalForm {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.95);

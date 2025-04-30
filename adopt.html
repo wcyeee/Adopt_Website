@@ -17,7 +17,7 @@
 </head>
 <body>
   <!-- 導覽列 -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
     <div class="container-fluid">
       <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Bootstrap" width="30" height="24">
 
@@ -73,7 +73,10 @@
     <div class="row g-4" id="animalContainer"></div>
   
     <!-- 新增動物卡片 -->
-    <button class="btn btn-success my-3" id="addAnimalBtn"><span class="plus-btn">+</span><br>新增領養動物</button>
+    <button class="btn btn-success my-3" id="addAnimalBtn">
+      <span class="text">新增領養動物</span>
+      <span class="plus-btn">+</span>
+    </button>
     <div id="addAnimalForm" style="display:none; max-width: 600px; margin-bottom:20px;">
       <form id="animalForm">
         <div class="form-floating mb-3">
