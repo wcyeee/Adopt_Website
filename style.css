@@ -44,7 +44,7 @@ body {
     flex-direction: column;  
     justify-content: center;
     margin: 70px 18%;
-    padding: 50px 50px;
+    padding: 50px;
     border-radius: 15px;
     background-color: rgb(251, 224, 195, 0.35);
 }
@@ -130,30 +130,26 @@ body {
     transition: background-color 0.3s ease, width 0.3s ease, height 0.3s ease;
     overflow: hidden;
     padding: 0;
-  }
-  
+}
   #addAnimalBtn:hover {
     background-color: #dc865c;
     width: 180px;    /* 擴大寬度以容納文字 */
     height: 110px;   /* 擴大高度 */
     border-radius: 35px; /* 橢圓形 */
-  }
-  
-  /* 加號文字 */
-  .plus-btn {
+}
+/* 加號文字 */
+.plus-btn {
     font-weight: 700;
     font-size: 70px;  /* 放大加號字體 */
     line-height: 1;
     transition: transform 0.3s ease;
-  }
-  
-  /* 滑鼠懸停加號放大 */
-  #addAnimalBtn:hover .plus-btn {
+}
+/* 滑鼠懸停加號放大 */
+#addAnimalBtn:hover .plus-btn {
     transform: scale(1.1);
-  }
-  
-  /* 新增領養動物文字 */
-  #addAnimalBtn span.text {
+}
+/* 新增領養動物文字 */
+#addAnimalBtn span.text {
     font-weight: 700;
     font-size: 20px;  /* 放大文字 */
     color: white;
@@ -168,14 +164,12 @@ body {
     transition: opacity 0.3s ease, max-height 0.3s ease;
     display: block;
     margin-bottom: 6px;
-  }
-  
-  /* hover 顯示文字 */
-  #addAnimalBtn:hover span.text {
+}
+/* hover 顯示文字 */
+#addAnimalBtn:hover span.text {
     opacity: 1;
     max-height: 30px;  /* 提高 max-height 以完整顯示 */
-  }
-    
+}   
 #addAnimalForm {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.95);
@@ -348,6 +342,76 @@ body {
     box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0);
 }
 
+/* 個人資料頁面 */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 70px;
+    padding: 0px 50px;
+    border-radius: 15px;
+    background-color: rgba(248, 233, 217, 0.151);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+}
+.profile-img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    flex-shrink: 0;
+}  
+.profile-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 垂直置中 */
+    align-items: flex-start; /* 文字靠左 */
+    margin-bottom: 80px;
+}
+.profile-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+.profile-title h2 {
+    font-size: 50px;
+    margin: 0;
+    margin-top: 35%;
+    font-weight: 700;
+}
+.profile-info p strong {
+    font-size: 20px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+.profile-info p {
+    font-size: 1rem;
+    color: #555;
+}
+.btn-edit {
+    margin-top: 42%;
+    margin-left: 25px;
+    font-size: 15px;
+    padding: 0.25rem 0.5rem;
+    color: #2c2c2c;
+    border: 1px solid #2c2c2c;
+}
+.btn-edit:hover {
+    background-color: #898989;
+    border: 1px solid #898989;
+}
+.btn-edit:active {
+    background-color: #4b4b4b !important; 
+    border: 1px solid #4b4b4b !important;
+}
+section {
+    margin-top:50px;
+    margin-bottom: 40px;
+}
+section h3 {
+    font-weight: 700;
+    margin-bottom: 15px;
+}
 
 /* 頁尾 */
 footer {
