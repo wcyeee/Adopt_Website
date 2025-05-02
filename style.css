@@ -109,67 +109,67 @@ body {
     object-fit: cover;
     object-position: center center;
 }
-#addAnimalBtn {
-    background-color: #ef966a;
-    border: none;
-    border-radius: 50%; /* 圓形 */
-    width: 90px;      /* 加大寬度 */
-    height: 90px;     /* 加大高度 */
-    position: fixed;
-    bottom: 30px;     /* 底部距離稍微調整 */
-    right: 30px;      /* 右側距離稍微調整 */
-    z-index: 1050;
-    cursor: pointer;
+#filterType:focus, #sortOption:focus {
+    border-color: #8b8b8b;
+    box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0);
+}
+#filterType option:checked, #sortOption option:checked {
+    background-color: #7D8E95;
+    color: white;
+}
   
+#filterType option:hover, #sortOption option:hover {
+    background-color: #7D8E95;
+    color: white;
+}
+.add-animal-wrapper {
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse; /* 讓文字在按鈕上方 */
+    align-items: center;
+    z-index: 1050;
+}
+.add-animal-btn {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    padding: 0;
+    font-size: 40px;
+    display: flex;
     align-items: center;
     justify-content: center;
-  
-    /* 平滑過渡 */
-    transition: background-color 0.3s ease, width 0.3s ease, height 0.3s ease;
-    overflow: hidden;
-    padding: 0;
-}
-  #addAnimalBtn:hover {
-    background-color: #dc865c;
-    width: 180px;    /* 擴大寬度以容納文字 */
-    height: 110px;   /* 擴大高度 */
-    border-radius: 35px; /* 橢圓形 */
-}
-/* 加號文字 */
-.plus-btn {
-    font-weight: 700;
-    font-size: 70px;  /* 放大加號字體 */
-    line-height: 1;
     transition: transform 0.3s ease;
+    background-color: #ef966a;
+    border: none;
 }
-/* 滑鼠懸停加號放大 */
-#addAnimalBtn:hover .plus-btn {
-    transform: scale(1.1);
+.add-animal-btn:hover {
+    transform: scale(1.15);
+    background-color: #ef966a;
 }
-/* 新增領養動物文字 */
-#addAnimalBtn span.text {
+.add-animal-btn:active {
+    background-color: #be704a !important;
+}
+.add-animal-label {
+    margin-bottom: 25px; /* 文字和按鈕之間距離 */
+    border: 1.5px solid #ef966a;
+    color: #ef966a;
+    background-color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 20px;
     font-weight: 700;
-    font-size: 20px;  /* 放大文字 */
-    color: white;
-    margin-top: 10px;
-  
-    /* 初始隱藏 */
     opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-  
-    /* 動畫過渡 */
-    transition: opacity 0.3s ease, max-height 0.3s ease;
-    display: block;
-    margin-bottom: 6px;
+    transform: scale(0.95);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    white-space: nowrap;
+    pointer-events: none;
 }
-/* hover 顯示文字 */
-#addAnimalBtn:hover span.text {
+.add-animal-wrapper:hover .add-animal-label {
     opacity: 1;
-    max-height: 30px;  /* 提高 max-height 以完整顯示 */
-}   
+    transform: scale(1);
+}
 #addAnimalForm {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.95);
@@ -210,7 +210,7 @@ body {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: #4CAF50;
+    background: #ef966a;
     color: white;
     padding: 12px 20px;
     border-radius: 8px;
@@ -303,6 +303,7 @@ body {
     background-color: #d57d50;
 }
 
+
 /* 登入註冊表單 */
 .input-boxes {
     border: 1px solid #2c2c2c;
@@ -321,6 +322,9 @@ body {
 }
 .input-boxes button:hover {
     background-color: #586469;
+}
+.input-boxes button:active {
+    background-color: #3d464b !important;
 }
 .input-boxes label {
     color: #acacac;

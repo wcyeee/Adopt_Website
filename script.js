@@ -9,6 +9,8 @@ const overlay = document.getElementById("overlay");
 const statuses = ["尚未領養", "預約領養"];
 const navbar = document.querySelector('.navbar');
 
+
+
 window.addEventListener('scroll', () => {
   if (window.scrollY > 50) { // 捲動超過50px就加透明class
     navbar.classList.add('scrolled');

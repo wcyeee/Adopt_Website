@@ -73,10 +73,12 @@
     <div class="row g-4" id="animalContainer"></div>
   
     <!-- 新增動物卡片 -->
-    <button class="btn btn-success my-3" id="addAnimalBtn">
-      <span class="text">新增領養動物</span>
-      <span class="plus-btn">+</span>
-    </button>
+    <div class="add-animal-wrapper">
+      <button class="btn btn-success add-animal-btn" id="addAnimalBtn">
+        <span class="plus-btn">＋</span>
+      </button>
+      <div class="add-animal-label">新增領養動物</div>
+    </div>
     <div id="addAnimalForm" style="display:none; max-width: 600px; margin-bottom:20px;">
       <form id="animalForm">
         <div class="form-floating mb-3">
