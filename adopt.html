@@ -64,8 +64,6 @@
       <select id="sortOption" class="form-select w-auto">
         <option value="ageAsc">年齡由小到大</option>
         <option value="ageDesc">年齡由大到小</option>
-        <option value="rangeAsc">送養範圍 A→Z</option>
-        <option value="rangeDesc">送養範圍 Z→A</option>
       </select>
     </div>
   
@@ -79,38 +77,84 @@
       </button>
       <div class="add-animal-label">新增領養動物</div>
     </div>
-    <div id="addAnimalForm" style="display:none; max-width: 600px; margin-bottom:20px;">
-      <form id="animalForm">
-        <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="animalName" placeholder="動物名稱" required/>
-          <label>動物名稱</label>
+
+    <div id="addAnimalForm" style="display:none;">
+      <form id="animalForm" class="d-flex gap-4">
+        <!-- 左側：圖片上傳 -->
+        <div class="upload-area w-40">
+          <label for="animalImage" class="form-label">上傳圖片</label>
+          <input type="file" class="form-control" id="animalImage" accept="image/*">
+          <img id="previewImage" src="#" alt="預覽圖片" class="img-fluid mt-3 d-none rounded border" />
         </div>
-        <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="animalType" placeholder="動物種類" required/>
-          <label>動物種類</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="number" class="form-control" id="animalAge" placeholder="動物年齡" required/>
-          <label>動物年齡</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="animalRange" placeholder="可送養縣市（請用空格隔開）" required/>
-          <label>可送養縣市（請用空格隔開）</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="animalDesc" placeholder="描述" required/>
-          <label>描述</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="url" class="form-control" id="animalImage" placeholder="圖片網址" required/>
-          <label>圖片網址</label>
-        </div>
-        <div class="form-buttons d-flex justify-content-end gap-2">
-          <button type="button" id="cancelBtn" class="btn btn-secondary">取消</button>
-          <button type="submit" class="btn btn-primary">送出</button>
+      
+        <!-- 右側：表單欄位 -->
+        <div class="form-area w-60">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="animalName" placeholder="動物名稱" required />
+            <label>動物名稱</label>
+          </div>
+      
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="animalType" placeholder="動物種類" required />
+            <label>動物種類</label>
+          </div>
+      
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="animalAge" placeholder="動物年齡（月）" min="0" required />
+            <label>動物年齡（月）</label>
+          </div>
+
+          <div class="d-flex justify-content-between mb-3">
+            <div style="flex: 1; margin-right: 1rem;">
+              <label class="form-label d-block">動物性別</label>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="animalGender" id="genderMale" value="男" required />
+                <label class="form-check-label" for="genderMale">男</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="animalGender" id="genderFemale" value="女" />
+                <label class="form-check-label" for="genderFemale">女</label>
+              </div>
+            </div>
+            <div style="flex: 1;">
+              <label class="form-label d-block">結紮狀態</label>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="animalNeutered" id="neuteredYes" value="有" required />
+                <label class="form-check-label" for="neuteredYes">有</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="animalNeutered" id="neuteredNo" value="無" />
+                <label class="form-check-label" for="neuteredNo">無</label>
+              </div>
+            </div>
+          </div>
+        
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="animalVaccine" placeholder="已施打疫苗資訊" />
+            <label>已施打疫苗</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="animalFeature" placeholder="特徵描述" maxlength="10" required />
+            <label>特徵描述（最多10字）</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <textarea class="form-control" id="animalDesc" placeholder="送養說明" required style="height: 150px;"></textarea>
+            <label>送養說明</label>
+          </div>
+
+          <div class="form-buttons d-flex justify-content-end gap-2">
+            <button type="button" id="cancelBtn" class="btn btn-secondary">取消</button>
+            <button type="submit" id="submitBtn" class="btn btn-primary">送出</button>
+          </div>
         </div>
       </form>
+      
+
     </div>
+    
+
   </div>
 
   <!-- 新增成功提示小框框 -->

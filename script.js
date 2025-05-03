@@ -10,7 +10,13 @@ const statuses = ["尚未領養", "預約領養"];
 const navbar = document.querySelector('.navbar');
 
 
+// 除錯
+window.onerror = function(message, source, lineno, colno, error) {
+  console.error("錯誤訊息:", message, "來源:", source, "行:", lineno, "列:", colno);
+};
 
+
+// nav透明效果
 window.addEventListener('scroll', () => {
   if (window.scrollY > 50) { // 捲動超過50px就加透明class
     navbar.classList.add('scrolled');
@@ -19,16 +25,17 @@ window.addEventListener('scroll', () => {
   }
 });
 
+// render動物卡片
 let animals = [
-  { id: 1, name: "小花", species: "狗", age: 2, range: "北部", desc: "3個月／母", status: "尚未領養", img: "image/pig.jpg" },
-  { id: 2, name: "小白", species: "貓", age: 3, range: "中部", desc: "1歲5個月／公", status: "預約領養", img: "image/pig.jpg" },
-  { id: 3, name: "小黑", species: "貓", age: 1, range: "南部", desc: "3個月／母", status: "預約領養", img: "image/pig.jpg" },
-  { id: 4, name: "小黃", species: "豬", age: 4, range: "中部", desc: "1歲5個月／公", status: "尚未領養", img: "image/pig.jpg" },
-  { id: 5, name: "小白", species: "豬", age: 4, range: "中部", desc: "1歲5個月／公", status: "預約領養", img: "image/pig.jpg" },
-  { id: 6, name: "小黑", species: "豬", age: 4, range: "中部", desc: "1歲5個月／公", status: "預約領養", img: "image/pig.jpg" },
-  { id: 7, name: "小黃", species: "豬", age: 4, range: "中部", desc: "1歲5個月／公", status: "尚未領養", img: "image/pig.jpg" },
-  { id: 8, name: "小白", species: "豬", age: 4, range: "中部", desc: "1歲5個月／公", status: "預約領養", img: "image/pig.jpg" },
-  { id: 9, name: "小黑", species: "豬", age: 4, range: "中部", desc: "1歲5個月／公", status: "預約領養", img: "image/pig.jpg" },
+  { id: 1, name: "小花", species: "狗", age: 2, desc: "這是一個簡短描述", status: "尚未領養", img: "image/pig.jpg" },
+  { id: 2, name: "小白", species: "貓", age: 3, desc: "旺旺旺旺旺", status: "預約領養", img: "image/pig.jpg" },
+  { id: 3, name: "小黑", species: "貓", age: 1, desc: "123456778", status: "預約領養", img: "image/pig.jpg" },
+  { id: 4, name: "小黃", species: "豬", age: 4, desc: "簡短好簡短", status: "尚未領養", img: "image/pig.jpg" },
+  { id: 5, name: "小白", species: "豬", age: 4, desc: "嘿嘿嘿嘿嘿", status: "預約領養", img: "image/pig.jpg" },
+  { id: 6, name: "小黑", species: "豬", age: 4, desc: "懶得打了", status: "預約領養", img: "image/pig.jpg" },
+  { id: 7, name: "小黃", species: "豬", age: 4, desc: "這是一個簡短描述", status: "尚未領養", img: "image/pig.jpg" },
+  { id: 8, name: "小白", species: "豬", age: 4, desc: "這是一個簡短描述", status: "預約領養", img: "image/pig.jpg" },
+  { id: 9, name: "小黑", species: "豬", age: 4, desc: "這是一個簡短描述", status: "預約領養", img: "image/pig.jpg" },
 ];
 
 function generateId() {
@@ -65,8 +72,10 @@ function renderCards(data) {
     `;
     animalContainer.appendChild(col);
   });
+
 }
 
+// 篩選排序功能
 function filterAndSort() {
   const type = filterType.value;
   const sort = sortOption.value;
@@ -80,14 +89,13 @@ function filterAndSort() {
   filtered.sort((a, b) => {
     if (sort === "ageAsc") return a.age - b.age;
     if (sort === "ageDesc") return b.age - a.age;
-    if (sort === "rangeAsc") return a.range.localeCompare(b.range);
-    if (sort === "rangeDesc") return b.range.localeCompare(a.range);
     return 0;
   });
 
   renderCards(filtered);
 }
 
+// 新增動物按鈕
 addBtn.addEventListener("click", () => {
   formDiv.style.display = "block";
   overlay.style.display = "block";
@@ -131,12 +139,22 @@ animalForm.addEventListener("submit", e => {
   const name = document.getElementById("animalName").value.trim();
   const species = document.getElementById("animalType").value.trim();
   const age = Number(document.getElementById("animalAge").value.trim());
-  const range = document.getElementById("animalRange").value.trim();
+  const gender = document.querySelector('input[name="animalGender"]:checked')?.value;
+  const neutered = document.querySelector('input[name="animalNeutered"]:checked')?.value;
+  const vaccine = document.getElementById("animalVaccine").value.trim();
+  const feature = document.getElementById("animalFeature").value.trim();
   const desc = document.getElementById("animalDesc").value.trim();
-  const img = document.getElementById("animalImage").value.trim() || "default.jpg";
 
-  if (!name || !species || !age || !range) {
+  const imgInput = document.getElementById("animalImage");
+  const img = imgInput.files[0] ? URL.createObjectURL(imgInput.files[0]) : "image/default.jpg";
+
+  if (!name || !species || isNaN(age) || !gender || !neutered || !feature || !desc) {
     alert("請填寫所有必填欄位");
+    return;
+  }
+
+  if (isNaN(age) || age < 0) {
+    alert("年齡必須是 0 或以上的數字");
     return;
   }
 
@@ -145,17 +163,22 @@ animalForm.addEventListener("submit", e => {
     name,
     species,
     age,
-    range,
-    desc,
+    gender,
+    neutered,
+    vaccine,
+    feature: feature.slice(0, 10), // 保證不超過10字
+    desc, // 留下完整說明但不在卡片顯示
+    status: "尚未領養", // 固定值，不讓使用者輸入
     img,
   };
 
   animals.push(newAnimal);
   filterAndSort();
 
-  showToast("新增成功！"); // 顯示成功小提示
+  showToast("新增成功！");
   closeForm();
 });
+
 
 
 function onTransitionEnd() {
@@ -180,3 +203,23 @@ filterType.addEventListener("change", filterAndSort);
 sortOption.addEventListener("change", filterAndSort);
 
 filterAndSort();
+
+// 新增領養動物圖片預覽
+document.getElementById('animalImage').addEventListener('change', function (event) {
+  const file = event.target.files[0];
+  const preview = document.getElementById('previewImage');
+
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      preview.src = e.target.result;
+      preview.classList.remove('d-none'); // 移除 d-none 類別來顯示圖片
+    };
+    reader.readAsDataURL(file);
+  } else {
+    preview.src = '';
+    preview.classList.add('d-none'); // 若未選擇圖片，則隱藏預覽
+  }
+});
+
+
