@@ -90,8 +90,6 @@ document.addEventListener("DOMContentLoaded", function () {
     renderCards(filtered);
   }
 
-
-
     // 動物園動畫區
     const pet = document.getElementById('pet-container');
     const frames = Array.from(pet.querySelectorAll('img.frame'));

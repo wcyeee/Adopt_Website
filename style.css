@@ -161,7 +161,7 @@ body {
     opacity: 1;
     transform: scale(1);
 }
-#addAnimalForm {
+#addAnimalForm, #adoptAnimalForm {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.95);
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -188,7 +188,6 @@ body {
 #animalDesc {
     height: 150px;
 }  
-/* 預覽圖片樣式 */
 #previewImage {
     max-height: 500px;
     object-fit: cover;
@@ -200,17 +199,23 @@ body {
 .form-check-input:focus {
     box-shadow: 0 0 0 3px rgb(239, 150, 106, 0.8);
 }
-.form-buttons #submitBtn {
+.form-buttons #submitBtn, #submitAdoptBtn {
     background-color: #ef966a;
     border: none;
 }
-.form-buttons #submitBtn:hover {
+.form-buttons #submitBtn:hover, #submitAdoptBtn:hover {
     background-color: #d57d50;
 }
-.form-buttons #submitBtn:active {
+.form-buttons #submitBtn:active, #submitAdoptBtn:active {
     background-color: #be704a;
 }
-#addAnimalForm.show {
+#adoptForm h1 {
+    font-weight: 700;
+}
+#addAnimalForm label, #adoptAnimalForm label {
+    color: #6b6b6b;
+}
+#addAnimalForm.show, #adoptAnimalForm.show {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
     pointer-events: auto;
@@ -246,9 +251,6 @@ body {
 #toast.show {
     opacity: 1;
     transform: translateY(0);
-}
-#addAnimalForm label {
-    color: #6b6b6b;
 }
 .status-container {
     font-weight: 400;
@@ -327,10 +329,16 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-.adopt-btn:hover {
-    background-color: #d57d50;
+.adopt-btn:hover, .adopt-btn:active {
+    background-color: #d57d50 !important;
 }
-
+#detail-medical h2, #detail-desc h2{
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+#detail-medical p, #detail-desc p {
+   line-height: 30px;
+}
 
 /* 登入註冊表單 */
 .input-boxes {
@@ -373,7 +381,6 @@ body {
     border-color: #484848;
     box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0);
 }
-/* 我要領養按鈕彈窗 */
 
 
 /* 個人資料頁面 */
@@ -383,7 +390,7 @@ body {
     gap: 70px;
     padding: 0px 50px;
     border-radius: 15px;
-    background-color: rgba(248, 233, 217, 0.151);
+    background-color: white;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
 }
 .profile-img {
@@ -422,21 +429,36 @@ body {
     font-size: 1rem;
     color: #555;
 }
-.btn-edit {
+#profile-edit-btn {
     margin-top: 42%;
     margin-left: 25px;
     font-size: 15px;
-    padding: 0.25rem 0.5rem;
-    color: #2c2c2c;
-    border: 1px solid #2c2c2c;
-}
-.btn-edit:hover {
+    padding: 0.3rem 0.6rem;
+    color: #ffffff;
     background-color: #898989;
-    border: 1px solid #898989;
+    border: none;
 }
-.btn-edit:active {
+#profile-edit-btn:hover {
+    background-color: #696969;
+}
+#profile-edit-btn:active {
     background-color: #4b4b4b !important; 
-    border: 1px solid #4b4b4b !important;
+}
+#profile-logout-btn {
+    margin-top: 42%;
+    margin-left: 10px;
+    font-size: 15px;
+    padding: 0.3rem 0.6rem;
+    color: #ffffff;
+    background-color: #ef966a;
+    border: none;
+    font-weight: 500;
+}
+#profile-logout-btn:hover {
+    background-color: #d57d50;
+}
+#profile-logout-btn:active {
+    background-color: #c77b56;
 }
 section {
     margin-top:50px;
@@ -445,6 +467,49 @@ section {
 section h3 {
     font-weight: 700;
     margin-bottom: 15px;
+}
+#addprofileEditForm {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    max-width: 850px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background-color: white;
+    z-index: 1070;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
+    pointer-events: none;
+}
+#addprofileEditForm.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+#profileEditForm h1 {
+    font-weight: 700;
+}
+#profileEditForm p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+#profileEditForm label {
+    color: #6b6b6b;
+}
+#saveprofileBtn {
+    background-color: #ef966a;
+    border: none;
+}
+#saveprofileBtn:hover {
+    background-color: #d57d50;
+}
+#saveprofileBtn:active {
+    background-color: #be704a;
 }
 
 /* 動物園動畫 */

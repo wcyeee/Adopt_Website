@@ -62,7 +62,7 @@
   <div class="detail-container">
     <img src="image/pig.jpg" alt="動物圖片" class="detail-img" />
     <div class="detail-info">
-      <button class="btn btn-primary adopt-btn">我要領養！</button>
+      <button id="openAdoptFormBtn" class="btn btn-primary adopt-btn">我要領養！</button>
       <h1>小黃</h1>
       <h3>特徵描述</h3>
       <p>
@@ -72,45 +72,42 @@
         領養狀態：預約領養／尚未領養
       </p>
     </div>
-    <div class="w-100 mt-3">
-      <p>醫療狀態</p>
+    <div id="detail-medical" class="w-100 mt-3">
+      <h2>醫療狀態</h2>
       <p>
         結紮狀態：未結紮<br>
         已施打疫苗：未施打
       </p>
     </div>
-    <div class="w-100 mt-3">
-      <p>送養說明</p>
+    <div id="detail-desc" class="w-100 mt-3">
+      <h2>送養說明</h2>
+      <p>
+        1344134413441344134413441344134413441344134413441344
+      </p>
     </div>
   </div>
 
-  
-  <!-- 領養自我介紹彈窗 -->
-  <div id="adoptPopup" style="display:none; max-width: 600px; margin: 30px auto;" class="popup-form">
-    <form id="adoptForm">
-      <h4 class="mb-3">預約領養表單</h4>
+  <!-- 領養申請浮動視窗 -->
+  <div id="adoptAnimalForm" class="modal-form" style="display:none;">
+    <form id="adoptForm" class="d-flex flex-column gap-4 p-4">
+      <h1>領養申請表單</h1>
+      <p>
+        請完整填寫自我介紹，讓送養者更認識您！
+      </p>
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="adopterName" placeholder="您的姓名" required/>
-        <label>您的姓名</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="tel" class="form-control" id="adopterPhone" placeholder="聯絡電話" required/>
-        <label>聯絡電話</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="adopterAddress" placeholder="收容地址" required/>
-        <label>收容地址</label>
+        <textarea class="form-control" id="selfIntro" placeholder="自我介紹" required style="height: 200px;"></textarea>
+        <label>自我介紹</label>
       </div>
       <div class="d-flex justify-content-end gap-2">
         <button type="button" id="cancelAdoptBtn" class="btn btn-secondary">取消</button>
-        <button type="submit" class="btn btn-success">送出申請</button>
+        <button type="submit" id="submitAdoptBtn" class="btn btn-primary">申請</button>
       </div>
     </form>
   </div>
-  
-  <!-- 遮罩層 -->
-  <div id="overlay" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1050;"></div>
-  
+
+  <!-- 遮罩 -->
+  <div id="overlay" class="overlay" style="display: none;"></div>
+
     
     <!-- 頁尾 -->
     <footer>
@@ -128,7 +125,71 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
     <script src="script.js"></script>
-  
-
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+          const adoptAnimalForm = document.getElementById("adoptAnimalForm");
+          const adoptForm = document.getElementById("adoptForm");
+          const openAdoptBtn = document.getElementById("openAdoptFormBtn"); 
+          const cancelAdoptBtn = document.getElementById("cancelAdoptBtn");
+          const submitAdoptBtn = document.getElementById("submitAdoptBtn");
+          const overlay = document.getElementById("overlay");
+        
+          function openForm() {
+            adoptAnimalForm.style.display = "block";
+            if (overlay) overlay.style.display = "block";
+            setTimeout(() => {
+              adoptAnimalForm.classList.add("show");
+              if (overlay) overlay.classList.add("show");
+            }, 10);
+          }
+        
+          function closeForm() {
+            adoptAnimalForm.classList.remove("show");
+            if (overlay) overlay.classList.remove("show");
+        
+            adoptAnimalForm.removeEventListener("transitionend", onFormTransitionEnd);
+            adoptAnimalForm.addEventListener("transitionend", onFormTransitionEnd, { once: true });
+        
+            if (overlay) {
+              overlay.removeEventListener("transitionend", onOverlayTransitionEnd);
+              overlay.addEventListener("transitionend", onOverlayTransitionEnd, { once: true });
+            }
+          }
+        
+          function onFormTransitionEnd() {
+            if (!adoptAnimalForm.classList.contains("show")) {
+              adoptAnimalForm.style.display = "none";
+              adoptForm.reset();
+            }
+          }
+        
+          function onOverlayTransitionEnd() {
+            if (overlay && !overlay.classList.contains("show")) {
+              overlay.style.display = "none";
+            }
+          }
+        
+          if (openAdoptBtn) {
+            openAdoptBtn.addEventListener("click", () => {
+              console.log("點擊成功");
+              openForm();
+            });
+          }
+        
+          if (cancelAdoptBtn) cancelAdoptBtn.addEventListener("click", closeForm);
+          if (overlay) overlay.addEventListener("click", closeForm);
+        
+          adoptForm.addEventListener("submit", e => {
+            e.preventDefault();
+            const intro = document.getElementById("selfIntro").value.trim();
+            if (!intro) {
+              alert("請填寫自我介紹後再送出");
+              return;
+            }
+            alert("申請已送出！");
+            closeForm();
+          });
+        });   
+    </script>
 </body>
 </html>
