@@ -91,7 +91,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
     // 動物園動畫區
-    const pet = document.getElementById('pet-container');
+
+  const pets = document.querySelectorAll('.pet-container');
+
+  pets.forEach(pet => {
     const frames = Array.from(pet.querySelectorAll('img.frame'));
     let walkFrames = frames.filter(f => f.dataset.state === 'walk');
     let currentWalkIndex = 0;
@@ -262,6 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
         happyState();
       }
     });
+  });
 
     
   // 新增動物按鈕

@@ -276,10 +276,10 @@ body {
 
 /* 我要領養動物詳細頁面 */
 .detail-container {
-    max-width: 950px;     /* 容器最寬 900px */
-    width: 100%;          /* 滿版（在 max-width 限制下生效） */
-    margin: 100px auto;   /* 上下 100px，左右自動置中 */
-    padding: 0 15px;      /* 左右內距 15px，看需求可調整 */
+    max-width: 950px;    
+    width: 100%;         
+    margin: 100px auto;  
+    padding: 0 15px;
     display: flex;
     gap: 50px;
     align-items: flex-start;
@@ -339,6 +339,7 @@ body {
 #detail-medical p, #detail-desc p {
    line-height: 30px;
 }
+
 
 /* 登入註冊表單 */
 .input-boxes {
@@ -512,8 +513,9 @@ section h3 {
     background-color: #be704a;
 }
 
+
 /* 動物園動畫 */
-#pet-container {
+.pet-container {
     position: fixed;
     top: 100px;
     left: 100px;
@@ -523,10 +525,10 @@ section h3 {
     user-select: none;
     z-index: 9999;
 }
-#pet-container:active {
+.pet-container:active {
     cursor: grabbing;
 }
-#pet-container img {
+.pet-container img {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -534,7 +536,7 @@ section h3 {
     display: none;
     pointer-events: none; /* 讓事件不阻擋 */
 }
-#pet-container img.active {
+.pet-container img.active {
     display: block;
 }
 
